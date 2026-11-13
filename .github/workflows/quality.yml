@@ -24,4 +24,6 @@ jobs:
       - name: Check types
         run: pyright
       - name: Run tests
-        run: python -m pytest -q
+        env:
+    PYTHONPATH: ${{ github.workspace }}/lab_1
+    run: python -m pytest -q
