@@ -1,4 +1,3 @@
-
 """
 Лабораторная работа № 3 «Regular expressions».
 Вариант 16.
@@ -33,9 +32,9 @@ def setup_logging() -> None:
         format="%(asctime)s | %(levelname)s | %(message)s",
         handlers=[
             logging.FileHandler(LOG_PATH, encoding="utf-8"),
-            logging.StreamHandler()
+            logging.StreamHandler(),
         ],
-        force=True
+        force=True,
     )
 
 
@@ -48,15 +47,11 @@ PATTERNS = {
     "height": re.compile(r"(?:0|1|2)\.\d{2}"),
     "inn": re.compile(r"\d{12}"),
     "identifier": re.compile(r"\d{2}-\d{2}/\d{2}"),
-    "occupation": re.compile(
-        r"[A-Za-zА-Яа-яЁё]+(?:[ -][A-Za-zА-Яа-яЁё]+)*"
-    ),
+    "occupation": re.compile(r"[A-Za-zА-Яа-яЁё]+(?:[ -][A-Za-zА-Яа-яЁё]+)*"),
     "latitude": re.compile(r"-?\d{1,2}\.\d+"),
     "blood_type": re.compile(r"(?:A|B|AB|O)[+−]"),
     "issn": re.compile(r"\d{4}-\d{4}"),
-    "uuid": re.compile(
-        r"[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}"
-    ),
+    "uuid": re.compile(r"[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}"),
     "date": re.compile(r"\d{4}-\d{2}-\d{2}"),
 }
 
@@ -130,10 +125,7 @@ def validate_rows(
                 invalid_by_field[field].append(row_number)
                 invalid_rows.add(row_number)
 
-    logger.info(
-        "Проверка завершена. Найдено ошибочных строк: %d",
-        len(invalid_rows)
-    )
+    logger.info("Проверка завершена. Найдено ошибочных строк: %d", len(invalid_rows))
 
     return invalid_by_field, sorted(invalid_rows)
 
@@ -159,8 +151,7 @@ def main() -> None:
         "rows_checked": len(rows),
         "columns_checked": len(headers),
         "invalid_count_by_column": {
-            field: len(numbers)
-            for field, numbers in invalid_by_field.items()
+            field: len(numbers) for field, numbers in invalid_by_field.items()
         },
         "unique_invalid_rows_count": len(invalid_rows),
         "invalid_rows_zero_based": invalid_rows,
