@@ -17,7 +17,6 @@ from pathlib import Path
 
 from checksum import calculate_checksum, serialize_result
 
-
 BASE_DIR = Path(__file__).resolve().parent
 CSV_PATH = BASE_DIR / "data" / "16.csv"
 REPORT_PATH = BASE_DIR / "validation_report.json"

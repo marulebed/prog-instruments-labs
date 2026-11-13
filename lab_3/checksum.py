@@ -1,6 +1,5 @@
-import json
 import hashlib
-from typing import List
+import json
 from pathlib import Path
 
 """
@@ -8,8 +7,8 @@ from pathlib import Path
 """
 
 
-def calculate_checksum(row_numbers: List[int]) -> str:
-    """
+def calculate_checksum(row_numbers: list[int]) -> str:
+    r"""
     Вычисляет md5 хеш от списка целочисленных значений.
 
     ВНИМАНИЕ, ВАЖНО! Чтобы сумма получилась корректной, считать, что первая строка с данными csv-файла имеет номер 0
